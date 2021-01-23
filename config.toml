@@ -1,0 +1,7 @@
+baseURL = "https://umarahmad.xyz/"
+languageCode = "en-us"
+title = "Umar Ahmad"
+theme="bearblog"
+publishDir="../blog-gen/"
+# [taxonomies]
+#     tag = "tags"

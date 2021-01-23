@@ -1,0 +1,35 @@
+---
+title: "About"
+date: 2021-01-23T05:35:22+05:30
+draft: true
+type: "blog"
+---
+
+[[https://avatars.githubusercontent.com/u/3756804?s=250&u=59ad23af3c347e0d7eef9af35c55c6b157ff9527&v=4.png]]
+
+My name is Umar Ahmad. I work as a software engineer in [[https://www.zomato.com][Zomato]].
+
+I spend most of my time inside Emacs. Discovering and learning something new almost every time I sit down for change in my config.
+Hopefully, this blog will contain some of those learnings.
+
+Speaking of config, you can find my [[https://github.com/Gleek/dotfiles][dotfiles]] and my [[https://github.com/Gleek/emacs.d][emacs config]] on github
+
+
+** Blog
+
+This blog is built with Hugo and uses a slightly modified [[https://github.com/janraasch/hugo-bearblog][BearBlog]] theme.
+The comments are powered by [[https://utteranc.es/][Utterances]]. You need a github account for this.
+
+Alternatively, contact using email.
+
+*** Relevant links
+
+- [[https://github.com/Gleek/gleek.github.io/][Source]](Github): Hosted as a github page.
+
+- [[/index.xml][RSS]]: If you prefer a rss reader instead.
+
+- [[/sitemap.xml][Sitemap]]
+
+* Contact
+
+=(rot13 "nuznq.hzne2008@lnubb.va")=
