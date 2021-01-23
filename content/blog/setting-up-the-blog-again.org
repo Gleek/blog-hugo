@@ -1,7 +1,6 @@
 ---
 title: "Setting up the blog again"
 date: 2021-01-23T19:39:03+05:30
-draft: true
 tags:
     - blog
 ---
