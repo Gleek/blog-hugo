@@ -1,1 +1,13 @@
 Source for the static generation of [[https://umarahmad.xyz]]. Hosted at https://github.com/Gleek/gleek.github.io/
+
+Steps to reproduce this blog:
+- Install hugo
+- Have the following directory structure
+
+#+begin_src
+.
+├── blog-gen  // is the deployed html
+└── blog-src  // This repository goes here
+#+end_src
+
+To deploy run =make deploy=. For testing =make server_start=
