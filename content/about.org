@@ -17,13 +17,15 @@ Speaking of config, you can find my [[https://github.com/Gleek/dotfiles][dotfile
 ** Blog
 
 This blog is built with Hugo and uses a slightly modified [[https://github.com/janraasch/hugo-bearblog][BearBlog]] theme.
-The comments are powered by [[https://utteranc.es/][Utterances]]. You need a github account for this.
-
-Alternatively, contact using email.
+It is hosted as a github page.
+The comments are powered by [[https://utteranc.es/][Utterances]], for which you’ll need a github account to post with.
+Alternatively, contact using email given below.
 
 *** Relevant links
 
-- [[https://github.com/Gleek/gleek.github.io/][Source]](Github): Hosted as a github page.
+- [[https://github.com/Gleek/gleek.github.io/][Source]] (Generated HTML)
+
+- [[https://github.com/Gleek/blog-hugo][Source for Hugo generation]]
 
 - [[/index.xml][RSS]]: If you prefer a rss reader instead.
 
