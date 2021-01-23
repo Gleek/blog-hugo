@@ -1,0 +1,82 @@
+---
+title: "Setting up the blog again"
+date: 2021-01-23T19:39:03+05:30
+draft: true
+tags:
+    - blog
+---
+
+I recently acquired [[https://umarahmad.xyz][umarahmad.xyz]] and move my old blog there.
+
+The earlier version of this blog was based on octopress with a lot of
+handcrafted code. The architecture of octopress along with my
+excitement of setting up the blog made this a cocktail of all possible
+plugins and tweaks that I could manage to squeeze into a static site.
+Copy pasted rake snippets and hacked together web and ruby code gave me
+what I wanted at the time. I was happy with that.
+
+Although, setting up those bells and whistles was fun, this made it a
+nightmare to manage. Since I rarely update the blog, I never actually
+remembered how things worked. Every time I wanted to make a change I
+had to go through the documentation and the hacks I made again just to
+figure out the full system again.
+
+Setting up the domain and blog again gave me an opportunity to
+resolve few of these issues.
+
+I wanted something simple and straightforward to manage. I also wanted
+to stay in the comfort of Emacs as much as possible and avoid any
+extra tooling as much as possible.
+
+Hugo seems to have a simple architecture for me to wrap my head around
+and also has good org-mode support.
+
+I might move on to org-publish, later, when that becomes more mature just
+to have more control over how things are but for now Hugo seems to
+work just fine.
+
+The quick start guide from hugo and [[https://retifrav.github.io/blog/2019/03/17/migrating-from-octopress-to-hugo/][this blogpost]] helped me in
+understanding the full process.
+
+I did the full process in Emacs which I’ll cover in another post in
+complete detail.
+
+Broadly these are the filtered down steps to reach to that stage.
+
+- *Getting the domain*: [[https://www.namecheap.com/][Namecheap]] seemed like the best option to me,
+  costing almost 10% of what other providers did. Domain was activated
+  pretty quickly as well.
+
+- *Setting up Cloudflare:* Using cloudflare the DNS can be setup by
+  updating the nameservers on the Namecheap dashboard. Alternatively,
+  namecheap can point to github pages directly([[https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages/][link]]).
+
+- *Setting up Comment system*: Hugo ships with Disqus but I wanted a
+  lighter comment system with less lock-in. [[https://utteranc.es/][Utterances]] provides a way
+  for this. They use github issues to manage the comments. One
+  drawback is that people will require a github account to post a
+  comment. Considering that most of the posts here will be tech
+  related. It should cover atleast 80% of the userbase.
+
+I also didn’t want bootstrap with analytics and social media plugins
+plaguing the site. I went for the [[https://github.com/janraasch/hugo-bearblog][smallest theme]] which suited my
+needs, removed few unnecessary styles from it. It’s a Pure HTML and
+CSS theme which also makes it ideal for viewing in text based browsers
+such as eww
+
+I removed google analytics. I realized that I neither need to know
+detailed impressions and click paths nor do I want to ever have ads on
+this blog. The adblockers would anyways not let google count the
+correct impressions.
+
+The total requests that cloudflare provides along with the path based
+analytics with a JS plugin is about the all analytics I’ll ever need
+for this blog. I’m unsure if the JS plugin with path based analytics
+would add any value. I might remove it later. I just don’t want to
+bother removing it now considering their claim to be a privacy
+friendly analytics along with only 6KB of extra payload.
+
+I plan on detailing the move from octopress to hugo in a second part
+of this blog, but since there are multiple posts about this already
+I’m planning to keep that Emacs focused and demonstrate on how I
+accomplish similar tasks in emacs.

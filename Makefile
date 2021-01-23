@@ -3,8 +3,8 @@ new_post:
 
 server_start:
 	killall hugo || true
+	(sleep 2 && open "http://localhost:1313") & # Mac specific use xdg-open on linux
 	hugo server -D
-	open "http://localhost:1313" # Mac specific use xdg-open on linux
 
 deploy:
 	hugo

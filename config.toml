@@ -3,5 +3,7 @@ languageCode = "en-us"
 title = "Umar Ahmad"
 theme="bearblog"
 publishDir="../blog-gen/"
+ignoreFiles = [ "^\\..*$", ".*umar@umarbook\\.local.*$", "flycheck_.*$"]
+
 # [taxonomies]
 #     tag = "tags"
