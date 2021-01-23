@@ -1,7 +1,6 @@
 ---
 title: "About"
 date: 2021-01-23T05:35:22+05:30
-draft: true
 type: "blog"
 ---
 
