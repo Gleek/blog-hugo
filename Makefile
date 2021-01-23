@@ -8,5 +8,6 @@ server_start:
 deploy:
 	hugo
 	cd ../blog-gen/
+	git	add .
 	git commit -am "Site update $(date -u)"
 	git push origin hugo
