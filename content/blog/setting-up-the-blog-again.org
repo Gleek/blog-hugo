@@ -5,7 +5,7 @@ tags:
     - blog
 ---
 
-I recently acquired [[https://umarahmad.xyz][umarahmad.xyz]] and move my old blog there.
+I recently acquired [[https://umarahmad.xyz][umarahmad.xyz]] and moved my old blog there.
 
 The earlier version of this blog was based on octopress with a lot of
 handcrafted code. The architecture of octopress along with my
@@ -46,9 +46,11 @@ Broadly these are the filtered down steps to reach to that stage.
   costing almost 10% of what other providers did. Domain was activated
   pretty quickly as well.
 
-- *Setting up Cloudflare:* Using cloudflare the DNS can be setup by
-  updating the nameservers on the Namecheap dashboard. Alternatively,
-  namecheap can point to github pages directly([[https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages/][link]]).
+- *Setting up Cloudflare:* For using cloudflare, the DNS can be setup by
+  updating the nameservers on the Namecheap dashboard. The cloudflare
+  on-boarding flow is quite intuitive and I didn’t face any issue with
+  it. Alternatively, namecheap can point to github pages directly if
+  you don’t need cloudflare to manage the traffic([[https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages/][link]]).
 
 - *Setting up Comment system*: Hugo ships with Disqus but I wanted a
   lighter comment system with less lock-in. [[https://utteranc.es/][Utterances]] provides a way
