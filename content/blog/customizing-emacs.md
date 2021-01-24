@@ -5,6 +5,8 @@ date: 2014-04-10 18:32:50 +0530
 aliases:
     - /blog/2014/04/10/customizing-emacs
 description: customize emacs for better and faster development
+tags:
+    - emacs
 ---
 ![](https://lh3.googleusercontent.com/ARlXYE_wnAvftBBl2UEvu-z9SpH-q3lyYNukRnNRwbUnXt6fGTP304OloJ3sJ3pSlMr_9QnPr_RxKamv65BFkEUqUEKB0TftIzNuOaiabipF1DNMYLzYReB_40Qr2TbbDndKYzeY5-MPUNmyzH9xmsuhWxmpywT4U5ayHJo2-dGy1W7wRlY2kY7QtTvneNt4OqGGZlqsSZLYM3WVcVwWFxBeJzPxirItCLPzRoRNPfdZZRy6k31JS65TU3WYW-7hvOcTuoZ6vDJSj2K3HyD73dpJ7YjNUwmJB9tjNzy7bqUXm5ftnuG14qPKs1Gtz1jpAGESfgafhUeLQL1pvDWP-VBQDLIwYaXr-XFTatPTgalAAPNd66J-cJ_J0O1OkF1DM-KM4RjqDhLkMOT9-RM5fkrG5_Rnibw32yJho_cGYTyk7523_CnePswMWjMtmMrTI4zyrsaRYVqBjfRxwznHExq1nAwuR-NSmP2EeeLvPYFP6ZSyMWyZCga2K0LH6J9-Qa8aHdkneuQ9ti6w0QGEJHr9HinsGuWBuALKd2H0ZlPxrwhOdKSyEIaWgq2mkt0vL653PCK4sN5zGZZte3kc7LL3I4WZhlN1oaRsXbIRTJaLEYhQTYj4BrRDS-59IHAwl2Ddf_AzsF9r7c6cKs-A2DQL2QpM2Nb5gU5Ae05pIw=w270-h217-no)
 

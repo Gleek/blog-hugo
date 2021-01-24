@@ -17,7 +17,7 @@ what I wanted at the time. I was happy with that.
 Although, setting up those bells and whistles was fun, this made it a
 nightmare to manage. Since I rarely update the blog, I never actually
 remembered how things worked. Every time I wanted to make a change I
-had to go through the documentation and the hacks I made again just to
+had to go through the documentation and the hacks I made, just to
 figure out the full system again.
 
 Setting up the domain and blog again gave me an opportunity to
@@ -25,7 +25,7 @@ resolve few of these issues.
 
 I wanted something simple and straightforward to manage. I also wanted
 to stay in the comfort of Emacs as much as possible and avoid any
-extra tooling as much as possible.
+extra tooling.
 
 Hugo seems to have a simple architecture for me to wrap my head around
 and also has good org-mode support.
@@ -35,12 +35,12 @@ to have more control over how things are but for now Hugo seems to
 work just fine.
 
 The quick start guide from hugo and [[https://retifrav.github.io/blog/2019/03/17/migrating-from-octopress-to-hugo/][this blogpost]] helped me in
-understanding the full process.
+understanding the process.
 
-I did the full process in Emacs which I’ll cover in another post in
-complete detail.
+I did the this while staying almost completely in Emacs which I’ll
+cover in [[/blog/using-emacs-to-port-my-blog][another post]] in complete detail.
 
-Broadly these are the filtered down steps to reach to that stage.
+Broadly these are the filtered down steps to get to that point.
 
 - *Getting the domain*: [[https://www.namecheap.com/][Namecheap]] seemed like the best option to me,
   costing almost 10% of what other providers did. Domain was activated
@@ -55,20 +55,21 @@ Broadly these are the filtered down steps to reach to that stage.
 - *Setting up Comment system*: Hugo ships with Disqus but I wanted a
   lighter comment system with less lock-in. [[https://utteranc.es/][Utterances]] provides a way
   for this. They use github issues to manage the comments. One
-  drawback is that people will require a github account to post a
+  drawback is that people will need a github account to post a
   comment. Considering that most of the posts here will be tech
-  related. It should cover atleast 80% of the userbase.
+  related, it shouldn't be a problem for most of them.
 
-I also didn’t want bootstrap with analytics and social media plugins
-plaguing the site. I went for the [[https://github.com/janraasch/hugo-bearblog][smallest theme]] which suited my
-needs, removed few unnecessary styles from it. It’s a Pure HTML and
-CSS theme which also makes it ideal for viewing in text based browsers
-such as eww
+I also didn’t want any web frameworks, invasive analytics and social
+media plugins plaguing the site. I went for the [[https://github.com/janraasch/hugo-bearblog][smallest theme]] which
+suited my needs, removed few unnecessary styles from it and updated
+some code in order for it to work in my accordance. It’s a Pure HTML
+and CSS theme which also makes it ideal for viewing in text based
+browsers such as eww
 
-I removed google analytics. I realized that I neither need to know
-detailed impressions and click paths nor do I want to ever have ads on
-this blog. The adblockers would anyways not let google count the
-correct impressions.
+I removed google analytics. I realized that neither do I need to know
+the detailed impressions and click paths nor do I want to ever have
+ads on this blog. The adblockers would anyways not let google count
+the correct impressions.
 
 The total requests that cloudflare provides along with the path based
 analytics with a JS plugin is about the all analytics I’ll ever need
@@ -77,7 +78,7 @@ would add any value. I might remove it later. I just don’t want to
 bother removing it now considering their claim to be a privacy
 friendly analytics along with only 6KB of extra payload.
 
-I plan on detailing the move from octopress to hugo in a second part
+I plan on detailing the move from octopress to hugo in a [[/blog/using-emacs-to-port-my-blog][second part]]
 of this blog, but since there are multiple posts about this already
 I’m planning to keep that Emacs focused and demonstrate on how I
 accomplish similar tasks in emacs.

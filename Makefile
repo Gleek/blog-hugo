@@ -6,6 +6,11 @@ server_start:
 	(sleep 2 && open "http://localhost:1313") & # Mac specific use xdg-open on linux
 	hugo server -D
 
+live_server_start:
+	killall hugo || true
+	(sleep 2 && open "http://localhost:1313") &
+	hugo server
+
 deploy:
 	hugo
 	cd ../blog-gen/ ;\

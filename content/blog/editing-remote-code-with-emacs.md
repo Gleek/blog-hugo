@@ -5,6 +5,8 @@ date: 2017-04-11 22:56:54 +0530
 aliases:
     - /blog/2017/04/11/editing-remote-code-with-emacs
 description: Editing remote code with Emacs
+tags:
+    - emacs
 ---
 
 Lately, I've been working on a code-base situated remotely on a server accessible over `ssh`.
