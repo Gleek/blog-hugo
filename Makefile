@@ -16,4 +16,4 @@ deploy:
 	cd ../blog-gen/ ;\
 	git	add . ;\
 	git commit -am "Site update `date -u`";\
-	git push origin hugo;\
+	git push origin master;\

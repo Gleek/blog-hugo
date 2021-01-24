@@ -8,13 +8,13 @@ tags:
 
 In my [[/blog/setting-up-the-blog-again][previous post]] I explained my motivations to move this blog to hugo.
 
-This post is focused on how I did this in Emacs. As a matter of fact,
-this post is actually on how I do any such task from the within the
-comforts of Emacs. This post is therefore task agnostic and should be
+This post focuses on how I did this in Emacs. As a matter of fact,
+this post is actually on how I do any such task from within the
+comforts of Emacs. The post is therefore task agnostic and should be
 a basic demonstration of the capabilities of Emacs that I use.
 
 The purpose of this post is also to list down my workflow in detail
-for me to see gaps in it. The workflow can later be improved to fix
+for me to see any gaps in it. The workflow can later be improved to fix
 some of these gaps.
 
 This is in no way a comprehensive post for porting the mentioned
@@ -24,12 +24,12 @@ covered in doing something else. For a more detailed understanding of
 the process, please refer to [[https://retifrav.github.io/blog/2019/03/17/migrating-from-octopress-to-hugo/][this]] blog post by someone else.
 
 For the sake of brevity I’ll only cover these topics:
-- Setting up the environment, i.e., setting up the directory structure
-  git repositories and tooling.
+- Setting up the environment, i.e., setting up the directory
+  structure, git repositories and tooling.
 - Port my markdown files so that they work with hugo
 
 * Setting up the environment
-Hugo is a static site generator that works by by converting the
+Hugo is a static site generator that works by converting the
 "content" files written in many of the formats it supports, such as
 markdown or org into a set of html files.
 
@@ -124,7 +124,7 @@ This can be followed by running =C-c p s= bound to
 
 ** Fixing invalid spec
 One of the few incompatibilities in the markdown spec was how
-markdown to handled headings. Earlier
+markdown handled headings. Earlier
 #+begin_src
 #H1#
 ##H2##
@@ -160,7 +160,7 @@ I did this by:
 - Editing them and running =C-c C-c= to save these changes
 
 
-To make this simple it is done twice once to remove the preceding =#= and once to remove the following =#=
+To keep this simple it is done twice once to remove the preceding =#= and once to remove the following =#=
 
 This is how it looks:
 
