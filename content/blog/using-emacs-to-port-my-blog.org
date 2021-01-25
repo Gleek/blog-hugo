@@ -1,5 +1,5 @@
 ---
-title: Using Emacs to port my blog from Octopress to Hugo
+title: Porting my blog to Hugo from inside Emacs
 date: 2021-01-24T16:17:08+05:30
 tags:
     - emacs
@@ -11,7 +11,7 @@ staying inside Emacs and switching to the web browser every now and
 then.
 
 Doing this required me to use Emacs to edit and manage multiple files
-at once and this post demonstrates few of these techniques. The post
+at once and this post demonstrates a few of these techniques. The post
 is therefore mostly task agnostic and the techniques explained here
 should be usable for any such tasks.
 
