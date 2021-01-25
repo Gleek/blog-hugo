@@ -6,19 +6,21 @@ tags:
     - blog
 ---
 
-In my [[/blog/setting-up-the-blog-again][previous post]] I explained my motivations to move this blog to hugo.
+A few days ago [[/blog/setting-up-the-blog-again][I ported my blog to hugo]]. I did this mostly while
+staying inside Emacs and switching to the web browser every now and
+then.
 
-This post focuses on how I did this in Emacs. As a matter of fact,
-this post is actually on how I do any such task from within the
-comforts of Emacs. The post is therefore task agnostic and should be
-a basic demonstration of the capabilities of Emacs that I use.
+Doing this required me to use Emacs to edit and manage multiple files
+at once and this post demonstrates few of these techniques. The post
+is therefore mostly task agnostic and the techniques explained here
+should be usable for any such tasks.
 
 The purpose of this post is also to list down my workflow in detail
-for me to see any gaps in it. The workflow can later be improved to fix
-some of these gaps.
+for me to see any gaps in possible optimizations. These optimizations
+can later me worked upon and introduced in my workflow.
 
-This is in no way a comprehensive post for porting the mentioned
-framework and I've deliberately skipped steps that were either too
+This is in no way a comprehensive post for porting any blog to
+hugo and I've deliberately skipped steps that were either too
 straightforward to perform or used a technique that I've already
 covered in doing something else. For a more detailed understanding of
 the process, please refer to [[https://retifrav.github.io/blog/2019/03/17/migrating-from-octopress-to-hugo/][this]] blog post by someone else.
@@ -39,7 +41,7 @@ components across multiple places.
 
 ** Installing hugo
 =system-packages= package makes it possible to install any package from
-withing emacs.
+within emacs.
 
 Pressing =C-c P i= bound to =system-packages-install= and
 typing hugo in the minibuffer installs it using your preferred package
@@ -51,7 +53,7 @@ source repository having hugo files and the other would be for the
 generated html.
 
 I usually do directory operations from inside =dired= but I feel
-=counsel-find-file= is more intuitive when creating new files, in a
+=counsel-find-file= is more intuitive when creating new files, in
 different locations.
 
 - =C-x C-f= bound to =counsel-find-file=
@@ -60,8 +62,8 @@ different locations.
 - Type in =blog-gen= and =M-o= then =d= again to create another directory
   and quit to ivy buffer
 
-  This is how it looks in practice:
-  {{< video "create-directories.mp4" >}}
+This is how it looks in practice:
+{{< video "create-directories.mp4" >}}
 
 Initializing repositories can be done via =magit=
 - =C-x m=  bound to =magit-status= a directory will create a
@@ -96,7 +98,7 @@ directory list editable like any other file.
   {{< video "wdired-multi-rename.mp4" >}}
 
 ** Updating meta
-Aliases provide a way for hugo to create multiple links for one single
+=aliases= provide a way for hugo to create multiple links for one single
 post. The path for posts in my older blog was in
 =year/month/day/blog-title= format. There's a way to do this for [[https://gohugo.io/content-management/urls/#permalinks-configuration-example][all
 posts in hugo]], but I only wanted to retain this format for the older posts
@@ -174,6 +176,12 @@ As I mentioned earlier, the purpose of this post was not to be a
 comprehensive guide of porting to hugo but instead a demonstration for
 how these tasks that might have required writing complex
 shell scripts or doing repetitive effort were done easily from within emacs.
+
+Emacs provides other ways to manage multiple files together as
+well. Dired, LSP, Projectile can all be used to manage multiple files
+at once in ways not covered in this post and each demanding an article
+on it's own. I therefore, only covered the features that I used in this
+particular task.
 
 My emacs configuration can be found [[https://github.com/Gleek/emacs.d][on github]] for people who are interested
 in replicating some of the features described here.
