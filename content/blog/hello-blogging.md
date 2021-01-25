@@ -15,5 +15,7 @@ I think the answer to that will be same as the answer of the question that
 
 It should just be a sack-load of time wasted writing the things you already know. This question vexed my mind too and that's why I turned to my Guru, <a href="https://www.google.com/search?q=why+do+you+blog">Google</a>, just to find my answer [here](http://www.becomingminimalist.com/15-reasons-i-think-you-should-blog/). The only point which intrigued me was the comparisons of blog to a journal.
 Well yeah, I've always been thinking about a way I could
-<blockquote><b>Save everything on what I think and am working on</b></blockquote>
+
+> Save everything on what I think and am working on
+
 maybe this is the way it is supposed to be done. I can simply document my work through a public blog-post, which I can easily find and refer to later. Hopefully other people will find these posts helpful, relevant, or interesting.
