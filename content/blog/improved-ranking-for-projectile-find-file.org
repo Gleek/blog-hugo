@@ -1,0 +1,243 @@
+---
+title: Improve ranking of files in projectile
+date: 2021-01-28T15:43:20+05:30
+tags:
+    - emacs
+---
+
+I've been using =projectile=, and more recently =counsel-projectile=, to
+manage my project files and it has been a life saver.
+=projectile-find-file= is probably among my most used commands.
+
+Despite my fondness for this package, a thing that has bothered me is
+the default sorting of the files while searching. As the project
+becomes larger and the files become sparse, some extra typing needs to
+be done to filter down to the intended file.
+
+This post explores an improvement which should make the experience of
+searching for files better by providing a more relevant list of files.
+
+* Why not use =counsel-fzf=?
+
+There are packages that integrate external searching tools such as
+=counsel-fzf=. They usually provide better ranking than the out of the
+box experience from projectile. These can work asynchronously and are
+also faster than any native emacs implementation.
+
+Therefore, =counsel-fzf= alone should be sufficient for most people unhappy with
+the default search ranking in projectile.
+
+That being said, I've a few reasons for not using fzf
+** fzf is not specifically built to search files
+Even though, arguably, fzf is mostly used to filter a large list of
+files, it is not specifically built for it. It
+will work the same way when provided with any arbitrary list.
+
+This feature of fzf limits the optimizations that could have been
+made for the specific problem of searching filenames.
+
+** fzf lacks context
+fzf, like any other external tool, lacks the context from inside
+Emacs. It isn't aware of the recent files or the buffers that are open.
+
+Integrating these might be possible but certainly not easy.
+
+** fzf has fuzzy search
+This might be an unpopular opinion, but I don't think fuzzy searching is
+superior to it's alternatives.
+
+Fuzzy search would seem much faster than it's alternatives in
+filtering down the lists in theory. But, at least for me, in practice
+I've always been able to filter more quickly and reliably when using
+the default ivy filtering.
+
+Fuzzy search works roughly by adding =.*= after every character
+whereas the ivy works by substituting the space with =.*=
+
+So searching for =search term= would expand to =s.*e.*a.*…= for a
+generic fuzzy searching algorithm but =search.*term= for ivy.
+
+Fuzzy searching algorithms usually do have a scoring system which
+makes them do their magic but nonetheless, predicting this magic is
+hard. Many a times I see no correlation between the input and the
+results without really trying to find it.
+
+Also, as is obvious from the regex, fuzzy search would return a
+super-set of what a normal ivy search would, so you're almost always
+dealing with more results.
+
+Even when a fuzzy searching system is built specifically search files and has
+the context, it might not work as intended. Issue queue of VSCode, for
+example, has multiple examples of it failing for users([[https://github.com/microsoft/vscode/issues/2705][such]] [[https://github.com/microsoft/vscode/issues/99171][as]] [[https://github.com/microsoft/vscode/issues/103889][these]]).
+
+* Adding a ranking system
+Considering ivy already provides a good searching framework, what we
+need is a good ranking system.
+
+A generic search ranking system works by giving a /score/ to each search
+element which can then be used to sort the results.
+
+A basic scoring system could give scores on these factors
+** Static factors
+These factors are such that they are not affected by the search term
+but can be derived from the file.
+
+- *Buffer files*: If a file in the project is currently open there’s a
+  high chance that I’m searching for this file. The older the buffer
+  gets the less score boost it should get.
+- *Recent files*: If a file in a project has been recently visited that
+  should contribute to increasing it’s score.
+- *Length of file path*: Considering a file with a longer path can
+  afford more characters to get filtered, a file with shorter path
+  should get a better score.
+
+** Dynamic factors
+The scores due to these factors vary with the search term
+
+- *File non-directory name match*: If the non-directory name of the file
+  exactly matches the search term then it gets a score
+  boost. Eg. =file.ext= in =path/of/file.ext=
+- *File basename match*: If the basename of the file exactly matches the
+  search term then it gets a score boost. Eg. =file= in =path/of/file.ext=
+- *File prefix match*: If the prefix of the file basename  matches with the
+  search term then the score increased. Eg. =fi= in =path/of/file.ext=
+- *File name loose match*: If the file name loosely matches the search
+  term then give it a higher score than when only directory name
+  matches. Eg. =ile= in =path/of/file.ext=.
+
+
+As you might have guessed, these are ordered here in decreasing order
+of their scores.
+
+Considering the nature of the factors, only the best matching dynamic
+factor is chosen while choosing all the static factors while scoring.
+The reasoning for this is purely intuitive.
+
+* Demo
+The following videos demo =counsel-projectile-find-file=, =counsel-fzf=
+and our newly written =+projectile-find-file=, based on the scoring model above.
+
+This is the project tree that is used
+#+begin_src
+.
+├── a-somedirectory
+│   ├── afile-suffix.txt
+│   └── suffix.txt
+├── suffix-directory
+│   └── unrelated-file.txt
+├── suffix-postfix.txt
+└── suffix.txt
+#+end_src
+
+We’ll be searching for "=suffix=", and analyzing the results for each framework.
+** counsel-projectile-find-file
+- Default sorting seems alphabetic
+
+- Retains sorting when searching
+
+  {{< video "counsel-projectile-find-file-limitation.mp4" >}}
+** counsel-fzf
+- No apparent default sorting
+
+- File basenames exactly matching the search term are not pushed up.
+
+  {{< video "counsel-fzf-limitation.mp4" >}}
+** +projectile-find-file
+- Default sorting considers recent files and buffers and falls back on
+  alphabetic sorting
+
+- Searching for =suffix= brings the file base names exactly matching
+  =suffix= to the top
+
+- File is ranked higher if already open as a buffer
+
+  {{< video "+projectile-find-file-demo.mp4" >}}
+
+* Code
+You can find the code [[https://github.com/Gleek/emacs.d/blob/49875ba2ae8a3390408b582d0697d6237dd86fdb/packages/%2Bprojectile-find-file.el][here]] in my config. This is a permalink to the
+commit at the time of writing this. The latest version can be found on
+[[https://github.com/Gleek/emacs.d/search?q=projectile-find-file][the master branch]].
+
+
+** Working
+- It starts by populating hashtables with project recent files and
+  project buffer files with their base scores. Buffers get a linearly
+  decreasing score on the basis of their "oldness".
+- Projectile is invoked and the files are ranked and sorted using the
+  static factors. Length of the file is not considered at this time.
+- Once the user starts searching
+  - The =counsel--find-file-matcher= is used to filter down the list
+  - Both static and dynamic factors are applied to calculate the
+    scores
+  - The files are then sorted on the basis of scores they have
+
+** Few considerations
+The code above depends on =counsel-projectile=, but it is not a hard
+requirement. I only add it to provide few extra actions on the
+files. Those actions can be removed to remove that dependency.
+
+Most of the users should be well off with =(setq
+projectile-completion-system 'ivy)= anyway.
+
+I’d just mention that even though this code has worked well for me on
+my projects and in my workflow, I haven’t tested it specifically outside of
+my usage. Also, considering that the code has evolved just before this
+post, I’d suggest the user be ready to tackle a few bugs in their usage.
+
+Also note that the scores for each of the factor is completely intuitive and is not
+backed by data. Feel free to modify them. They should be easily
+modifiable by changing the variable defined on top of the linked file.
+
+To completely replace counsel-projectile with this add this snippet:
+#+begin_src elisp
+(advice-add 'counsel-projectile-switch-project-action :override 'counsel-projectile-switch-project-action-find-file)
+(advice-add 'counsel-projectile-find-file :override '+projectile-find-file)
+#+end_src
+
+To get file icons if you have [[https://github.com/asok/all-the-icons-ivy][all-the-icons-ivy]] installed, add this:
+#+begin_src elisp
+(eval-after-load 'all-the-icons-ivy
+  (progn (add-to-list 'all-the-icons-ivy-file-commands '+projectile-find-file)
+  (all-the-icons-ivy-setup)))
+#+end_src
+
+
+* Future improvements
+
+There are multiple improvements that I can think of already.
+
+These haven’t bothered me enough to actually solve for them right
+now. I might work on them later and update the code in my config
+accordingly.
+
+** Asynchronous running
+There’s a slight lag when listing a considerably large project
+files.
+
+An implementation I can think of is using emacs-async to populate the
+file list in a separate buffer and running a timer to transfer the
+content to ivy.
+
+I can think of few other similar hacks, each with caveats of their own. I’m
+not sure if there’s a way to achieve this in ivy natively.
+** Ranking exact subword match higher
+Search terms matching subwords inside files should rank higher. An
+example of subword can be =file= in =myFile= / =my-file= / =my_file= etc.
+** Handling spaces in search query
+All the dynamic factors for scoring are pretty much useless if the
+user adds space to their search query. Handling those to match
+subwords or directory names should improve the ranking further.
+** Making it easier to add new scoring factors
+The scoring factors are embedded in the code and there’s no easy way
+to add new ones. This is not an issue now considering the few factors
+we have currently, but this might have to be done to make this generic
+enough for other people to use it.
+
+* Outro
+As I said earlier, this code has worked great for the few projects I
+had but hasn’t been tested extensively. Please treat it likewise.
+
+This has only been possible because of the work of people like
+[[https://metaredux.com/about/][Bozhidar]] and [[https://oremacs.com/about/][Oleh]]. They both have had immense contribution to the
+emacs community. Please consider donating through the links on their
+respective websites, if you feel likewise and are able to.

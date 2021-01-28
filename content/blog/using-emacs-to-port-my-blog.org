@@ -15,10 +15,6 @@ at once and this post demonstrates a few of these techniques. The post
 is therefore mostly task agnostic and the techniques explained here
 should be usable for any such tasks.
 
-The purpose of this post is also to list down my workflow in detail
-for me to see any gaps in possible optimizations. These optimizations
-can later me worked upon and introduced in my workflow.
-
 This is in no way a comprehensive post for porting any blog to
 hugo and I've deliberately skipped steps that were either too
 straightforward to perform or used a technique that I've already
