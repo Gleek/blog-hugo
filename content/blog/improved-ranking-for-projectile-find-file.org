@@ -227,6 +227,12 @@ example of subword can be =file= in =myFile= / =my-file= / =my_file= etc.
 All the dynamic factors for scoring are pretty much useless if the
 user adds space to their search query. Handling those to match
 subwords or directory names should improve the ranking further.
+** Adding prescient.el as a scoring factor
+[[https://github.com/raxod502/prescient.el][Prescient.el]] is an effective enhancement to all your completing-read
+frameworks by ranking them in descending order of their usage. It
+works by scoring the recently used elements higher than the elements
+that were chosen earlier. This score can be incorporated in the total
+score as a static factor, to get even better results.
 ** Making it easier to add new scoring factors
 The scoring factors are embedded in the code and there’s no easy way
 to add new ones. This is not an issue now considering the few factors
