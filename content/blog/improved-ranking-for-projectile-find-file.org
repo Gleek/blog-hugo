@@ -66,9 +66,10 @@ Also, as is obvious from the regex, fuzzy search would return a
 super-set of what a normal ivy search would, so you're almost always
 dealing with more results.
 
-Even when a fuzzy searching system is built specifically search files and has
-the context, it might not work as intended. Issue queue of VSCode, for
-example, has multiple examples of it failing for users([[https://github.com/microsoft/vscode/issues/2705][such]] [[https://github.com/microsoft/vscode/issues/99171][as]] [[https://github.com/microsoft/vscode/issues/103889][these]]).
+Even when a fuzzy searching system is built specifically to search
+files and has the context, it might not work as intended. Issue queue
+of VSCode, for example, has multiple examples of it failing for
+users([[https://github.com/microsoft/vscode/issues/2705][such]] [[https://github.com/microsoft/vscode/issues/99171][as]] [[https://github.com/microsoft/vscode/issues/103889][these]]).
 
 * Adding a ranking system
 Considering ivy already provides a good searching framework, what we
@@ -100,7 +101,7 @@ The scores due to these factors vary with the search term
 - *File basename match*: If the basename of the file exactly matches the
   search term then it gets a score boost. Eg. =file= in =path/of/file.ext=
 - *File prefix match*: If the prefix of the file basename  matches with the
-  search term then the score increased. Eg. =fi= in =path/of/file.ext=
+  search term then the score is increased. Eg. =fi= in =path/of/file.ext=
 - *File name loose match*: If the file name loosely matches the search
   term then give it a higher score than when only directory name
   matches. Eg. =ile= in =path/of/file.ext=.

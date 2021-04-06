@@ -1,0 +1,106 @@
+---
+title: Quick persistent scratch buffers
+date: 2021-04-03T15:49:21+05:30
+tags:
+    - emacs
+---
+
+Emacs has a feature where you can quickly open a buffer to paste or
+keep text temporarily. It can be done by calling =switch-to-buffer= and
+typing out any name and pressing return. If a buffer with such a name
+exists it shows up, otherwise an empty buffer with no associated file
+is created. I discovered this accidentally years ago and have been
+using this feature a lot since.
+
+The problem with this is that the buffers created only last till your
+emacs session lasts. If you exit emacs, these temporary buffers die
+with it.
+
+Emacs also starts up with a =*scratch*= buffer which, like a temporary
+buffer, is not associated with a file and can be used to quickly jot
+down some text. This again has the same fate of other temporary
+buffers if we exit emacs. The content on closing emacs is lost and you
+start with a new blank scratch on the next startup.
+
+A package called [[https://github.com/Fanael/persistent-scratch/][persistent-scratch]] seemed to have solved this problem
+by saving the scratch buffer every time you kill emacs. I’ve been
+using it for some time to persist my scratch across sessions but have
+recently realized that it can work with any temporary buffer.
+
+The key here is the =persistent-scratch-scratch-buffer-p-function=
+variable that can hold any custom function that can be used to match
+up a file name for the package to auto save.
+
+I added a function that does exactly this. All temporary buffers starting
+with =*scratch:= are treated as candidates for getting persisted. The
+function is a one liner and is as follows
+
+#+begin_src elisp
+(defun persistent-scratch-buffer-identifier()
+    (string-match "^*scratch:" (buffer-name)))
+#+end_src
+
+I also added a few utility functions that enhance the experience of
+quickly opening up a new scratch buffer with persistent-scratch-mode
+enabled. On pressing a key mapped to a command a prompt auto completes
+for the available prompts to open an existing scratch buffer or
+suggests a new scratch with a randomly named buffer. A custom name
+could be entered if required.
+
+It works by getting a list of scratches from here
+
+#+begin_src elisp
+(defun persistent-scratch-get-scratches()
+    (let ((scratch-buffers)
+          (save-data
+           (read
+            (with-temp-buffer
+              (let ((coding-system-for-read 'utf-8-unix))
+                (insert-file-contents persistent-scratch-save-file))
+              (buffer-string)))))
+      (dolist (saved-buffer save-data)
+        (push (substring (aref saved-buffer 0) (length "*scratch:")) scratch-buffers))
+      scratch-buffers))
+#+end_src
+
+and uses it to quickly open a scratch buffer
+
+#+begin_src elisp
+(defun persistent-scratch-quick-open()
+    (interactive)
+    (let* ((scratch-buffers (persistent-scratch-get-scratches))
+          (chosen-scratch (concat "*scratch:"
+                                  (completing-read
+                                   "Choose a scratch: "
+                                   scratch-buffers nil nil nil nil
+                                   (random-alnum 4))))
+          (buffer-exists-p (get-buffer chosen-scratch)))
+      (pop-to-buffer chosen-scratch)
+      (unless buffer-exists-p
+        (persistent-scratch-restore-this))
+      (persistent-scratch-mode)))
+#+end_src
+
+It uses a new function =persistent-scratch-restore-this= to restore the
+content of only that particular buffer if it was originally not open.
+The contents for this is completely same as the
+=persistent-scratch-restore= in the package.
+
+The only difference being that this limits the restoration to only one
+buffer unlike the original implementation which replaces the content
+for all overriding any unsaved changes for other buffers.
+
+Here’s the relevant portion of the code
+
+#+begin_src elisp
+(defun persistent-scratch-restore-this(&optional file)
+    (interactive)
+      ;; ...
+      (dolist (saved-buffer save-data)
+        (when (string= current-buf (aref saved-buffer 0))
+          (with-current-buffer (get-buffer-create (aref saved-buffer 0))
+            ;; ...
+#+end_src
+
+Full code can be found [[https://github.com/Gleek/emacs.d/blob/761dad7e97accd6d1537a201c5d447a6be1d155c/core/core-session.el#L11-L69][here]]. It uses a function(=random-alnum=)
+to generate random name for the buffer from [[https://github.com/Gleek/emacs.d/blob/761dad7e97accd6d1537a201c5d447a6be1d155c/core/core-util.el#L31][here]].
