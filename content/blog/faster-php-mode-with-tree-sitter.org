@@ -1,0 +1,71 @@
+---
+title: Faster php syntax highlighting with tree-sitter
+date: 2021-10-10T16:12:11+05:30
+tags:
+    - emacs
+---
+
+PHP mode in emacs sadly has [[https://github.com/emacs-php/php-mode/issues?q=slow++OR+performance++OR+latency][slow performance]] for large files. In my work, I have to sometimes deal
+with large PHP code bases and in certain cases, it becomes so slow that it is practically useless
+for me to use php-mode. I grudgingly have to switch to =fundamental-mode= to make smaller changes, in
+that case. There are alternatives like =web-mode= that is better suited for mixed syntax highlighting
+with files containing multiple web languages but there are other php-mode goodies like support for
+different coding styles and better indentation that make it worthy enough to not be discarded
+completely.
+
+I recently decided to deep dive into the performance issues of PHP and found syntax highlighting
+being the primary reason for slowness. To solve for it I eventually ended up removing the complete
+syntax highlight code and replacing it with [[https://github.com/ubolonton/emacs-tree-sitter][tree-sitter]]. This made highlighting much faster and
+reduced the latency considerably in writing larger files.
+
+This is what I ended up doing to achieve that:
+
+#+begin_src elisp
+(advice-add 'php-syntax-propertize-function :override #'return-false)
+(advice-add 'php-syntax-propertize-extend-region :override #'return-false)
+(remove-hook 'syntax-propertize-extend-region-functions #'php-syntax-propertize-extend-region)
+#+end_src
+
+Here the =return-false= is a small utility function and is defined as follows:
+#+begin_src elisp
+(defun return-false(&rest _)
+  "Return nil no matter what the inputs here.
+Useful to override functions to become empty"
+  nil)
+#+end_src
+
+
+The tree sitter configuration is as follows
+#+begin_src elisp
+(use-package tree-sitter
+  :ensure tree-sitter
+  :ensure tree-sitter-langs
+  :defer 2
+  :config
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+#+end_src
+
+
+For the sake of comparison my typing latency reduced from 600ms-2500ms to 35-50ms. This is closer to
+=fundamental-mode= where I get around 20-25ms of typing latency in the same file.
+
+The actual syntax highlighting has slight differences.
+
+Before:
+
+[[/images/php-highlight-sans-tree-sitter.png]]
+
+After:
+
+[[/images/php-highlight-tree-sitter.png]]
+
+
+As is evident from the screenshots, the =tree-sitter= provides slightly more consistent syntax
+highlighting by correctly highlighting the function names in a single color. A clear drawback is the
+missing doc-block syntax highlight, which the tree-sitter highlighter has ignored as comment.
+
+It might make sense for php-mode to adopt tree-sitter as the primary syntax highlight system and
+some effort can be diverted there in order to improve the syntax highlighting from
+tree-sitter. Integration with tree-sitter might also become a standard for major modes once there is
+[[https://www.reddit.com/r/emacs/comments/pxpq8d/rfc_emacs_treesitter_integration/][native tree-sitter support in Emacs]]. But, until that time, using hacks like this would solve for
+such issues.
