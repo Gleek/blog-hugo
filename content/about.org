@@ -6,32 +6,37 @@ type: "blog"
 
 [[https://avatars.githubusercontent.com/u/3756804?s=250&u=59ad23af3c347e0d7eef9af35c55c6b157ff9527&v=4.png]]
 
-My name is Umar Ahmad. I work as a software engineer in [[https://www.zomato.com][Zomato]].
+My name is Umar Ahmad. I'm currently working in [[https://www.zomato.com][Zomato]], a food delivery company and [[https://www.zomato.com/investor-relations][more]], to help it scale to serve millions of customers daily.
 
-I spend most of my time inside Emacs. Discovering and learning something new almost every time I sit down for change in my config.
-Hopefully, this blog will contain some of those learnings.
+This is me in the photo above in the year 2020.
 
-Speaking of config, you can find my [[https://github.com/Gleek/dotfiles][dotfiles]] and my [[https://github.com/Gleek/emacs.d][emacs config]] on github
+This is my personal blog which I aspire to update regularly with the things I learn mostly around computers and maybe also the other genres of life.
 
+Many of the posts on this blog are about Emacs. This is primarily because a very large portion of my time on a computer is spent inside it.
 
-** Blog
+Like your typical Emacs user, I regularly fall into the rabbit hole of refining my customization to my satisfaction only to be unsatisfied about it in sometime.
 
-This blog is built with Hugo and uses a slightly modified [[https://github.com/janraasch/hugo-bearblog][BearBlog]] theme.
+This has caused me to spend a significant amount of time customizing it and learning a few things in the process.
+
+Hopefully, this blog will contain some of these learnings.
+
+People interested in the contents of this blog might also be interested in my [[https://github.com/Gleek/emacs.d][emacs config]] and my [[https://github.com/Gleek/dotfiles][dotfiles]]
+
+** Meta
+
+This blog is built with Hugo and uses a custom theme inspired from the [[https://github.com/janraasch/hugo-bearblog][BearBlog]] theme.
 It is hosted as a github page.
+
 The comments are powered by [[https://utteranc.es/][Utterances]], for which you’ll need a github account to post with.
 Alternatively, contact using email given below.
 
 *** Relevant links
-
 - [[https://github.com/Gleek/gleek.github.io/][Source]] (Generated HTML)
-
 - [[https://github.com/Gleek/blog-hugo][Source for Hugo generation]]
-
 - [[/index.xml][RSS]]: If you prefer a rss reader instead.
-
 - [[/sitemap.xml][Sitemap]]
 
 * Contact
-
-#+CAPTION: Paste the quoted string on [[https://rot13.com][rot13.com]], in case you’re confused.
-=(rot13 "nuznq.hzne2008@lnubb.va")=
+You can contact me via the email below.
+#+ATTR_HTML: :style height: 14.5pt;
+[[/images/email.png]]
