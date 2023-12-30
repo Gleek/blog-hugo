@@ -14,7 +14,8 @@
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
   {{ end -}}
 
-  {{- partial "style.html" . -}}
+  {{ $css := resources.Get "main.css" | resources.Minify }}
+  <link crossorigin="anonymous" href="{{ $css.RelPermalink }}" rel="preload stylesheet">
 
   <!-- A partial to be overwritten by the user.
   Simply place a custom_head.html into
