@@ -4,6 +4,11 @@ title = "Umar Ahmad"
 theme="bearblog"
 publishDir="../blog-gen/"
 ignoreFiles = [ "^\\..*$", ".*umar@umarbook\\.local.*$", "flycheck_.*$"]
+[markup]
+  [markup.highlight]
+    style = 'monokailight'
+
+
 
 # [taxonomies]
 #     tag = "tags"
