@@ -6,15 +6,18 @@ type: "blog"
 
 [[https://avatars.githubusercontent.com/u/3756804?s=250&u=59ad23af3c347e0d7eef9af35c55c6b157ff9527&v=4.png]]
 
-My name is Umar Ahmad. I'm currently working in [[https://www.zomato.com][Zomato]], a food delivery company and [[https://www.zomato.com/investor-relations][more]], to help it scale to serve millions of customers daily.
+Hello, I'm Umar.
 
-This is me in the photo above in the year 2020.
+I'm currently based in Bangalore, India and working in [[https://www.zomato.com][Zomato]], a food delivery company and [[https://www.zomato.com/investor-relations][more]]. I was one of the starting members of the online ordering team there and have contributed to building and scaling systems to serve millions of customers daily. More details about my work can be found on my [[https://www.linkedin.com/in/ahmadumar/][linkedin]]
 
-This is my personal blog which I aspire to update regularly with the things I learn mostly around computers and maybe also the other genres of life.
+The face you see above belongs to me, captured in the year 2020.
 
-Many of the posts on this blog are about Emacs. This is primarily because a very large portion of my time on a computer is spent inside it.
+This is my personal blog where I aim to regularly share insights into my learning journey. This will mostly be around computers and technology with perhaps some other genres of life as well.
 
-Like your typical Emacs user, I regularly fall into the rabbit hole of refining my customization to my satisfaction only to be unsatisfied about it in sometime.
+Many of the posts on this blog are about [[https://www.gnu.org/software/emacs/][Emacs]]. This is primarily because a very large portion of my time on a computer is spent inside of it.
+
+
+As a typical Emacs user, I regularly fall into the rabbit hole of refining my customization to my satisfaction only to be unsatisfied with it in sometime.
 
 This has caused me to spend a significant amount of time customizing it and learning a few things in the process.
 
@@ -25,18 +28,16 @@ People interested in the contents of this blog might also be interested in my [[
 ** Meta
 
 This blog is built with Hugo and uses a custom theme inspired from the [[https://github.com/janraasch/hugo-bearblog][BearBlog]] theme.
-It is hosted as a github page.
+It is hosted as a [[https://docs.github.com/en/pages][Github page]].
 
 The comments are powered by [[https://utteranc.es/][Utterances]], for which you’ll need a github account to post with.
-Alternatively, contact using email given below.
+Alternatively, you can contact using the email address provided below.
 
 *** Relevant links
 - [[https://github.com/Gleek/gleek.github.io/][Source]] (Generated HTML)
 - [[https://github.com/Gleek/blog-hugo][Source for Hugo generation]]
-- [[/index.xml][RSS]]: If you prefer a rss reader instead.
+- [[/index.xml][RSS]]: If you prefer to use an RSS reader instead.
 - [[/sitemap.xml][Sitemap]]
 
 * Contact
-You can contact me via the email below.
-#+ATTR_HTML: :style height: 14.5pt;
-[[/images/email.png]]
+You can contact me via the email: blog@umarahmad.xyz
