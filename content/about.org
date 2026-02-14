@@ -8,36 +8,39 @@ type: "blog"
 
 Hello, I'm Umar.
 
-I'm currently based in Bangalore, India and working in [[https://www.zomato.com][Zomato]], a food delivery company and [[https://www.zomato.com/investor-relations][more]]. I was one of the starting members of the online ordering team there and have contributed to building and scaling systems to serve millions of customers daily. More details about my work can be found on my [[https://www.linkedin.com/in/ahmadumar/][linkedin]]
+I'm currently based in Bangalore, India and working at [[https://www.zomato.com][Zomato]], a food delivery company and [[https://www.zomato.com/investor-relations][more]]. I was one of the starting members of the online ordering team there and have contributed to building and scaling systems to serve millions of customers daily.
+
+More details can be found on my [[https://www.linkedin.com/in/ahmadumar/][LinkedIn]], in case you are interested.
 
 The face you see above belongs to me, captured in the year 2020.
 
 This is my personal blog where I aim to regularly share insights into my learning journey. This will mostly be around computers and technology with perhaps some other genres of life as well.
 
-Many of the posts on this blog are about [[https://www.gnu.org/software/emacs/][Emacs]]. This is primarily because a very large portion of my time on a computer is spent inside of it.
+Many posts on this blog are about [[https://www.gnu.org/software/emacs/][Emacs]]. I spend a large portion of my time on a computer inside it, whether I'm writing, reading, coding, or just organizing my work.
 
-
-As a typical Emacs user, I regularly fall into the rabbit hole of refining my customization to my satisfaction only to be unsatisfied with it in sometime.
+As a typical Emacs user, I regularly end up in the rabbit hole of refining my configuration: trying a new package, tweaking a workflow, or shaving off a bit of friction, only to revisit it again later.
 
 This has caused me to spend a significant amount of time customizing it and learning a few things in the process.
 
 Hopefully, this blog will contain some of these learnings.
 
-People interested in the contents of this blog might also be interested in my [[https://github.com/Gleek/emacs.d][emacs config]] and my [[https://github.com/Gleek/dotfiles][dotfiles]]
+People interested in the contents of this blog might also be interested in my [[https://github.com/Gleek/emacs.d][Emacs config]] and my [[https://github.com/Gleek/dotfiles][dotfiles]]
 
-** Meta
+* Contact
+You can contact me via the email: [[mailto:blog@umarahmad.xyz][blog@umarahmad.xyz]]
+
+or use [[https://x.com/UmarAhmad92][Twitter]], [[https://www.linkedin.com/in/ahmadumar/][LinkedIn]] or [[https://github.com/Gleek/][GitHub]] to connect
+
+* About this site
 
 This blog is built with Hugo and uses a custom theme inspired from the [[https://github.com/janraasch/hugo-bearblog][BearBlog]] theme.
-It is hosted as a [[https://docs.github.com/en/pages][Github page]].
+It is hosted as a [[https://docs.github.com/en/pages][GitHub page]].
 
-The comments are powered by [[https://utteranc.es/][Utterances]], for which you’ll need a github account to post with.
-Alternatively, you can contact using the email address provided below.
+The comments are powered by [[https://utteranc.es/][Utterances]], for which you’ll need a GitHub account to post with.
+Alternatively, you can contact using the email address provided above.
 
-*** Relevant links
+** Relevant links
 - [[https://github.com/Gleek/gleek.github.io/][Source]] (Generated HTML)
 - [[https://github.com/Gleek/blog-hugo][Source for Hugo generation]]
 - [[/index.xml][RSS]]: If you prefer to use an RSS reader instead.
 - [[/sitemap.xml][Sitemap]]
-
-* Contact
-You can contact me via the email: blog@umarahmad.xyz
