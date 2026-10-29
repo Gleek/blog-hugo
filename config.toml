@@ -3,6 +3,8 @@ languageCode = "en-us"
 title = "Umar Ahmad"
 theme="bearblog"
 publishDir="../blog-gen/"
+# The blog section owns /; do not also generate a separate homepage.
+disableKinds = ["home"]
 ignoreFiles = [ "^\\..*$", ".*umar@umarbook\\.local.*$", "flycheck_.*$"]
 [markup]
   [markup.highlight]
